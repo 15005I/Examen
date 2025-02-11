@@ -11,6 +11,10 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'formulario',
+    loadComponent: () => import('./formulario/formulario.component').then( m => m.FormularioComponent)
+  },
 ];
 
 @NgModule({

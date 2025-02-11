@@ -1,0 +1,59 @@
+<div style="height: 100vh; background-color: rgb(0, 0, 0);">
+  <header style="background-color: rgb(0, 0, 0); padding: 20px;">
+    <h1 class="ion-text-center" style="color: rgb(255, 255, 255);">Películas</h1>
+  </header>
+  <br>
+  <form [formGroup]="pelicula" (ngSubmit)="nPelicula()">
+    <ion-item>
+      <ion-label>Nombre de película:</ion-label>
+      <ion-input formControlName="nombre"></ion-input>
+    </ion-item>
+    <ion-label color="danger" *ngIf="pelicula.controls.nombre.errors?.['required'] && (pelicula.touched || pelicula.dirty)">* El nombre es obligatorio </ion-label>
+    <ion-item>
+      <ion-label>Año de lanzamiento:</ion-label>
+      <ion-input formControlName="fecha" type="number"></ion-input>
+    </ion-item>
+    <ion-label color="danger" *ngIf="pelicula.controls.fecha.errors?.['required'] && (pelicula.touched || pelicula.dirty)">* El año es obligatorio </ion-label>
+    <ion-item>
+      <ion-label>Nombre de productor:</ion-label>
+      <ion-input formControlName="nombreP"></ion-input>
+    </ion-item>
+    <ion-label color="danger" *ngIf="pelicula.controls.nombreP.errors?.['required'] && (pelicula.touched || pelicula.dirty)">* El nombre del productor es obligatorio </ion-label>
+    <ion-item>
+      <ion-label>Casa productora:</ion-label>
+      <ion-input formControlName="casaP"></ion-input>
+    </ion-item>
+    <ion-label color="danger" *ngIf="pelicula.controls.casaP.errors?.['required'] && (pelicula.touched || pelicula.dirty)">* La casa productora es obligatorio </ion-label>
+    <ion-item>
+      <ion-label>Protagonista:</ion-label>
+      <ion-input formControlName="protagonista"></ion-input>
+    </ion-item>
+    <ion-label color="danger" *ngIf="pelicula.controls.protagonista.errors?.['required'] && (pelicula.touched || pelicula.dirty)">* El protagonista es obligatorio </ion-label>
+    <p class="ion-text-center">
+      <ion-button type="submit" [disabled]="!pelicula.valid">Añadir pelicula</ion-button>
+    </p>
+ </form>
+    <br><br><br>
+    <div class="container" style="background-color: rgb(141, 141, 141);">
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr>
+            <th>Nombre de película</th>
+            <th>Año de lanzamiento</th>
+            <th>Nombre de productor</th>
+            <th>Casa productora</th>
+            <th>Protagonista</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let pelicula of peliculas">
+            <td><b>{{ pelicula.nombre }}</b></td>
+            <td>{{ pelicula.fecha}}</td>
+            <td>{{ pelicula.nombreP }}</td>
+            <td>{{ pelicula.casaP }}</td>
+            <td>{{ pelicula.protagonista }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
